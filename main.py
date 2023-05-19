@@ -17,4 +17,12 @@ with open("books/frankenstein.txt") as file:
                     result[letter] = 1
         return result
 
-    print(count_letter(file_contents))
+    def print_letter_count(file_contents):
+        count_dict = count_letter(file_contents)
+        for key in count_dict:
+            print(f"The '{key}' character was found {count_dict[key]} times")
+
+    print("--- Begin report of books/frankenstein.txt ---")
+    print(f"{count_words(file_contents)} words found in the document")
+    print_letter_count(file_contents)
+    print("--- End report ---")
