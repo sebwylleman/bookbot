@@ -6,4 +6,14 @@ with open("books/frankenstein.txt") as file:
         words = file_contents.split()
         return len(words)
 
-    print(count_words(file_contents))
+    def count_letter(file_contents):
+        result = {}
+        for letter in file_contents:
+            char = letter.lower()
+            if char in result:
+                result[char] += 1
+            else:
+                result[char] = 1
+        return result
+
+    print(count_letter(file_contents))
