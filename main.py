@@ -8,12 +8,13 @@ with open("books/frankenstein.txt") as file:
 
     def count_letter(file_contents):
         result = {}
-        for letter in file_contents:
-            char = letter.lower()
-            if char in result:
-                result[char] += 1
-            else:
-                result[char] = 1
+        for char in file_contents:
+            if char.isalpha():
+                letter = char.lower()
+                if letter in result:
+                    result[letter] += 1
+                else:
+                    result[letter] = 1
         return result
 
     print(count_letter(file_contents))
