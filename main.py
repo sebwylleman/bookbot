@@ -20,11 +20,15 @@ def count_chars(text):
     return char_count
 
 
+def report(text):
+    return f"--- Begin report of books/frankenstein.txt ---\n{count_words(text)} words found in the document"
+
+
 def main():
     path = "./books/frankenstein.txt"
     file_contents = get_book_text(path)
     total_num_words = count_words(file_contents)
-    print(count_chars(file_contents))
+    print(report(file_contents))
 
 
 main()
