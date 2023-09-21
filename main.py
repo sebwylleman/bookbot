@@ -3,39 +3,42 @@ def get_book_text(path):
         return file.read()
 
 
-def count_words(text):
-    words = text.split()
+def count_words(words):
     return len(words)
 
 
-def count_chars(text):
-    char_count = {}
-    words = text.split()
-    for char in words:
-        lowered = char.lower()
-        if lowered in char_count:
-            char_count[lowered] += 1
-        else:
-            char_count[lowered] = 1
-    return char_count
+def count_chars(words):
+    count = {}
+    for word in words:
+        for char in word.lower():
+            if char in count:
+                count[char] += 1
+            else:
+                count[char] = 1
+    return count
 
 
-def sorted_dict(char_count):
-    sorted_count = sorted(char_count.items(), key=lambda item: item[1], reverse=True)
-    return sorted_count
+def reverse_sort_count(count):
+    return sorted(count.items(), key=lambda item: item[1], reverse=True)
 
 
 def main():
     path = "./books/frankenstein.txt"
-    file_contents = get_book_text(path)
-    total_num_words = count_words(file_contents)
-    char_count = count_chars(file_contents)
+    text = get_book_text(path)
+    words = text.split()
+    total_num_words = count_words(words)
+    count = count_chars(words)
+    reverse_count = reverse_sort_count(count)
 
     print(
-        f"--- Begin report of books/frankenstein.txt ---\n{count_words(file_contents)} words found in the document"
+        f"--- Begin report of books/frankenstein.txt ---\n{total_num_words} words found in the document"
     )
     print()
-    print(sorted_dict(char_count))
+    for item in reverse_count:
+        if item[0].isalpha():
+            print(f"The '{item[0]}' character was found {item[1]} times")
+    print()
+    print("--- End report ---")
 
 
 main()
