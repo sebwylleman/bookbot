@@ -20,15 +20,22 @@ def count_chars(text):
     return char_count
 
 
-def report(text):
-    return f"--- Begin report of books/frankenstein.txt ---\n{count_words(text)} words found in the document"
+def sorted_dict(char_count):
+    sorted_count = sorted(char_count.items(), key=lambda item: item[1], reverse=True)
+    return sorted_count
 
 
 def main():
     path = "./books/frankenstein.txt"
     file_contents = get_book_text(path)
     total_num_words = count_words(file_contents)
-    print(report(file_contents))
+    char_count = count_chars(file_contents)
+
+    print(
+        f"--- Begin report of books/frankenstein.txt ---\n{count_words(file_contents)} words found in the document"
+    )
+    print()
+    print(sorted_dict(char_count))
 
 
 main()
