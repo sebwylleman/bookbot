@@ -30,14 +30,14 @@ def convert_to_list_of_dicts(char_count: dict[str, int]) -> list[dict[str, int]]
     return result
 
 
-def sort_on(char_count):
+def sort_on(char_count: dict[str, int]) -> int:
     return char_count["count"]
 
 
-def sort_char_count(list_of_char_count):
+def sort_char_count(list_of_char_count: list[dict[str, int]]):
     return list_of_char_count.sort(reverse=True, key=sort_on)
 
-def print_char_stat(sorted_chars):
+def print_char_stat(sorted_chars: list[dict[str, int]]) -> str:
     for char_count in sorted_chars:
         char = char_count["char"]
         if char.isalpha():
