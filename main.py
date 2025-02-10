@@ -1,16 +1,17 @@
-def get_character_count(words: list[str]) -> dict[str, int]:
+def get_character_count(text: str) -> dict[str, int]:
     character_count = {}
+    lowercase_text = text.lower()
 
-    for word in words:
-        for char in word.lower():
-            if char not in character_count:
-                character_count[char] = 0
-            character_count[char] += 1
+    for character in lowercase_text:
+        if character not in character_count:
+            character_count[character] = 0
+        character_count[character] += 1
 
     return character_count
 
 
-def get_num_words(words: list[str]) -> int:
+def get_num_words(text: str) -> int:
+    words = text.split()
     return len(words)
 
 
@@ -20,11 +21,9 @@ def get_book_text() -> str:
 
 
 def main():
-    file_contents = get_book_text()
-
-    words = file_contents.split()
-    get_num_words(words)
-    print(get_character_count(words))
+    text = get_book_text()
+    num_words = get_num_words(text)
+    character_count = get_character_count(text)
 
 
 main()
