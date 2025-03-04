@@ -15,8 +15,8 @@ def get_num_words(text: str) -> int:
     return len(words)
 
 
-def get_book_text() -> str:
-    with open("books/frankenstein.txt") as f:
+def get_book_text(file_path) -> str:
+    with open(file_path) as f:
         return f.read()
 
 
@@ -46,8 +46,8 @@ def print_char_stat(sorted_chars: list[dict[str, int]]) -> str:
             print(f"The '{char}' char was found {count} times")
 
 
-def print_report(text: str, list_of_char_count: list[dict[str, int]]):
-    print("--- Begin report of books/frankenstein.txt ---")
+def print_report(file_path: str, text: str, list_of_char_count: list[dict[str, int]]):
+    print("--- Begin report of {file_path} ---")
     print(f"{get_num_words(text)} words found in the document")
     print_char_stat(list_of_char_count)
     print("--- End report ---")
